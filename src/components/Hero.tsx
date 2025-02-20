@@ -26,7 +26,7 @@ export default function Hero() {
               Camilo Sierra
             </h1>
             <h2 className="text-2xl md:text-3xl text-gray-600 font-light">
-              Software Developer
+              Software Developer - Web Development
             </h2>
           </motion.div>
           
@@ -39,7 +39,7 @@ export default function Hero() {
               <Github size={24} />
             </motion.a>
             <motion.a 
-              href="https://linkedin.com/in/yourusername" 
+              href="https://www.linkedin.com/in/camilo-sierra-b23b51259/" 
               className="text-gray-400 hover:text-violet-600 transition-colors"
               whileHover={{ scale: 1.1, rotate: -5 }}
             >

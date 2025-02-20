@@ -6,9 +6,10 @@ export default function Experience() {
     {
       title: "FrontEnd Developer ",
       company: "SpracheApp.com",
-      period: "2023 July - 2024 December",
+      period: "2023 July - 2025 Present",
       description: `-Developed the front-end of the Spracheapp.com web portal, implementing various functionalities, animations, connections with the backend, and performance optimization.
-      -Worked closely with designers and developers to achieve the client's objectives.`
+      -Worked closely with designers and developers to achieve the client's objectives.
+      -Contributor in a master project “Integral System for the Evaluation of Engineering Projects at UNAB”, currently updating the project giving it new functionalities to make use of it in my degree project.`
     },
     {
       title: "Developer Freelancer ",

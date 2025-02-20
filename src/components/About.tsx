@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Languages } from 'lucide-react';
+import { Flag, Languages } from 'lucide-react';
 
 const LanguageCard = ({ language, flag, level }: { language: string; flag: string; level: string }) => (
   <motion.div
@@ -20,6 +20,7 @@ export default function About() {
   const languages = [
     { language: "Spanish", flag: "ES", level: "Native" },
     { language: "English", flag: "EN", level: "Advanced" },
+    { language: "Italian", flag: "IT", level: "Beginner"},
   ];
 
   return (

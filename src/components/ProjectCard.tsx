@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Lock } from 'lucide-react';
-import { ProjectType } from './Projects';
+import { ProjectType } from '../types/project';
 
 type ProjectCardProps = {
   project: ProjectType;

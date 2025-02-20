@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Github } from 'lucide-react';
-import { ProjectType } from './Projects';
+import { ProjectType } from '../types/project';
 
 type ProjectModalProps = {
   project: ProjectType | null;

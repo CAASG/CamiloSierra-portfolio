@@ -17,6 +17,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .animate-blob-horizontal {
   animation: blob-horizontal 10s infinite;
 }
