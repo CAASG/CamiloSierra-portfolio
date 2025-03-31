@@ -24,14 +24,23 @@ export default function TechStack() {
   const frontendStack = {
     name: "Full Stack Development",
     technologies: [
+      { name: "Nextjs", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg" },
+      { name: "Laravel", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/laravel/laravel-original.svg" },
+      { name: "Typescript", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" },
       { name: "JavaScript", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" },
+      { name: "Nodejs", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" },
       { name: "PHP", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" },
       { name: "HTML5", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" },
       { name: "CSS3", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" },
+      { name: "Tailwind CSS", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "Bootstrap", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg" },
       { name: "React", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" },
-      { name: "React Native", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" },
       { name: "Angular", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg" },
-      { name: "Laravel", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/laravel/laravel-original.svg" }
+      { name: "Webflow", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/webflow/webflow-original.svg" },
+      { name: "Figma", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/figma/figma-original.svg" },
+      { name: "Vercel", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vercel/vercel-original.svg" },
+      { name: "Netlify", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/netlify/netlify-original.svg" },
+      { name: "Vite", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vite/vite-original.svg" }
     ]
   };
 
@@ -41,9 +50,9 @@ export default function TechStack() {
       {
         name: "AWS",
         items: [
-          { name: "Lambda Functions", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg" },
-          { name: "EC2", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg" },
-          { name: "Security Rules", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg" }
+          { name: "Lambda Functions", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+          { name: "EC2", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+          { name: "Security Rules", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" }
         ]
       },
       {
@@ -60,12 +69,14 @@ export default function TechStack() {
   const databases = {
     name: "Databases",
     technologies: [
+      { name: "Supabase", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/supabase/supabase-original.svg" },
       { name: "PostgreSQL", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" },
       { name: "Oracle", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/oracle/oracle-original.svg" },
       { name: "MongoDB", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" },
       { name: "MySQL", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" },
       { name: "Microsoft SQL", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" },
-      { name: "FireBase DataBase", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/firebase/firebase-original.svg" }
+      { name: "FireBase DataBase", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/firebase/firebase-original.svg" },
+      { name: "Neo4j", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/neo4j/neo4j-original.svg" }
     ]
   };
 
@@ -76,7 +87,12 @@ export default function TechStack() {
       { name: "Git", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" },
       { name: "GitHub", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" },
       { name: "Python", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" },
-      { name: "Java", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" }
+      { name: "Java", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" },
+      { name: "Blender", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/blender/blender-original.svg" },
+      { name: "Adobe After Effects", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/aftereffects/aftereffects-original.svg" },
+      { name: "Adobe Photoshop", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/photoshop/photoshop-original.svg" },
+      { name: "Adobe Illustrator", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/illustrator/illustrator-plain.svg" },
+      { name: "Adobe Premiere Pro", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/premierepro/premierepro-original.svg" }
     ]
   };
 
