@@ -5,11 +5,12 @@ import { useState, useEffect } from 'react';
 const spracheImages = import.meta.glob('../data/spracheImages/*.png', { eager: true, as: 'url' });
 const sislProImages = import.meta.glob('../data/sislProImages/*.png', { eager: true, as: 'url' });
 const techVaultImages = import.meta.glob('../data/techvaultImages/*.png', { eager: true, as: 'url' });
+const webflowImages = import.meta.glob('../data/headphones/*.png', { eager: true, as: 'url' });
 
 const projectImages = Object.values(spracheImages);
 const projectImages2 = Object.values(sislProImages);
 const projectImages3 = Object.values(techVaultImages);
-
+const projectImages4 = Object.values(webflowImages);
 
 
 const stats = [
@@ -22,6 +23,7 @@ export default function FeaturedProject() {
   const [currentImage, setCurrentImage] = useState(0);
   const [currentImage2, setCurrentImage2] = useState(0);
   const [currentImage3, setCurrentImage3] = useState(0);
+  const [currentImage4, setCurrentImage4] = useState(0);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -45,6 +47,14 @@ export default function FeaturedProject() {
     }, 5000);
   
     return () => clearInterval(timer3);
+  }, []);
+
+  useEffect(() => {
+    const timer4 = setInterval(() => {
+      setCurrentImage4((prev) => (prev + 1) % projectImages4.length);
+    }, 5000);
+  
+    return () => clearInterval(timer4);
   }, []);
 
   return (
@@ -79,7 +89,7 @@ export default function FeaturedProject() {
                 key={currentImage}
                 src={projectImages[currentImage]}
                 alt={`SprachApp Screenshot ${currentImage + 1}`}
-                className="w-full h-full object-contain"
+                className="w-full h-full object-cover"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -353,6 +363,94 @@ export default function FeaturedProject() {
          </motion.div>
        </div>
      </div>
+     {/* ------------------------------------ Webflow project ----------------------------------- */} 
+     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-14">
+       
+
+       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+         <motion.div
+           initial={{ opacity: 0, x: -20 }}
+           whileInView={{ opacity: 1, x: 0 }}
+           transition={{ duration: 0.8 }}
+           viewport={{ once: true }}
+           className="relative aspect-video rounded-xl overflow-hidden shadow-2xl group"
+           onClick={() => setSelectedImage(projectImages4[currentImage4])}
+         >
+           <AnimatePresence mode="wait">
+             <motion.img
+               key={currentImage4}
+               src={projectImages4[currentImage4]}
+               alt={`System Screenshot ${currentImage4 + 1}`}
+               className="w-full h-full object-cover"
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               exit={{ opacity: 0 }}
+               transition={{ duration: 0.5 }}
+             />
+           </AnimatePresence>
+           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+             {projectImages4.map((_, index) => (
+               <button
+                 key={index}
+                 onClick={(e) => { e.stopPropagation(); setCurrentImage4(index); }}
+                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                   currentImage4 === index ? 'bg-white w-4' : 'bg-white/50'
+                 }`}
+               />
+             ))}
+           </div>
+         </motion.div>
+
+         <motion.div
+           initial={{ opacity: 0, x: 20 }}
+           whileInView={{ opacity: 1, x: 0 }}
+           transition={{ duration: 0.8 }}
+           viewport={{ once: true }}
+           className="space-y-6"
+         >
+           <div className="flex items-center space-x-2 text-violet-600">
+             <Languages size={24} />
+             <span className="text-lg font-semibold"> Webflow Project - Headphones</span>
+           </div>
+           
+           <p className="text-lg text-gray-600">
+           This project is a simple and clean landing page for headphones. 
+           It was created using Webflow and figma, a platform that allows you to create responsive and beautiful 
+           websites using a drag-and-drop interface.
+           </p>
+
+           <div className="grid grid-cols-2 gap-4 py-6">
+             {stats.map((stat, index) => (
+               <motion.div
+                 key={index}
+                 initial={{ opacity: 0, y: 20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                 viewport={{ once: true }}
+                 className="bg-white/50 backdrop-blur-sm p-4 rounded-xl border border-violet-100"
+               >
+                 <stat.icon className="w-6 h-6 text-violet-600 mb-2" />
+                 <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
+                 <div className="text-sm text-gray-600">{stat.label}</div>
+               </motion.div>
+             ))}
+           </div>
+            {/* Button */}            
+           <div className="flex space-x-4 pt-4">
+             <a
+               href="https://preview.webflow.com/preview/headphones-fec2ab?utm_medium=preview_link&utm_source=designer&utm_content=headphones-fec2ab&preview=d4e29e2f71f935107040e5ecd2a7618b&workflow=preview"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="inline-flex items-center space-x-2 px-6 py-3 bg-violet-600 text-white rounded-full hover:bg-violet-700 transition-colors duration-300 mb-14"
+             >
+               <ExternalLink size={20} />
+               <span>See project on Webflow</span>
+             </a>
+             
+           </div>
+         </motion.div>
+       </div>
+      </div>
 
       {/* Modal de Imagen Expandida */}
       <AnimatePresence>
@@ -367,7 +465,7 @@ export default function FeaturedProject() {
             <motion.img
               src={selectedImage}
               alt="Expanded"
-              className="max-w-4xl max-h-[90vh] object-contain rounded-lg shadow-lg"
+              className="max-w-4xl max-h-[90vh] object-cover rounded-lg shadow-lg"
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
