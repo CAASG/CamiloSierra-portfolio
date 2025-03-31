@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 const spracheImages = import.meta.glob('../data/spracheImages/*.png', { eager: true, as: 'url' });
 const sislProImages = import.meta.glob('../data/sislProImages/*.png', { eager: true, as: 'url' });
-const techVaultImages = import.meta.glob('../data/techVaultImages/*.png', { eager: true, as: 'url' });
+const techVaultImages = import.meta.glob('../data/techvaultImages/*.png', { eager: true, as: 'url' });
 
 const projectImages = Object.values(spracheImages);
 const projectImages2 = Object.values(sislProImages);
@@ -245,8 +245,8 @@ export default function FeaturedProject() {
         </div>
       </div>
 
-       {/* ------------------------------------ other ----------------------------------- */} 
-       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ------------------------------------ other ----------------------------------- */} 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
        
 
        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
