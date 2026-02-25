@@ -5,7 +5,7 @@ export const personalInfo: PersonalInfo = {
   role: "Full Stack Developer",
   email: "camilosierra860@gmail.com",
   phone: "+57 304 524 1314",
-  location: "Bucaramanga, Colombia",
+  location: "Bogotá D.C., Colombia",
   linkedin: "https://www.linkedin.com/in/camilo-sierra-b23b51259/",
   github: "https://github.com/CAASG",
   portfolio: "https://camilo-sierra-portfolio.vercel.app",

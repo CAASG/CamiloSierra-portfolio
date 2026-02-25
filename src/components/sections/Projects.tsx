@@ -1,35 +1,102 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github, ExternalLink } from "lucide-react";
+import { ArrowUpRight, Github, ExternalLink, Play } from "lucide-react";
 import Section from "../layout/Section";
 import { projects } from "../../data/projects";
+import type { ProjectMedia } from "../../types";
 
 const spracheImages = import.meta.glob("../../assets/images/projects/sprache/*.png", { eager: true, query: "?url", import: "default" });
-const sislProImages = import.meta.glob("../../assets/images/projects/sisl-pro/*.png", { eager: true, query: "?url", import: "default" });
-const techvaultImages = import.meta.glob("../../assets/images/projects/techvault/*.png", { eager: true, query: "?url", import: "default" });
 const headphonesImages = import.meta.glob("../../assets/images/projects/headphones/*.png", { eager: true, query: "?url", import: "default" });
 
 const projectImageMap: Record<string, string[]> = {
   spracheapp: Object.values(spracheImages) as string[],
-  "sisl-pro-unab": Object.values(sislProImages) as string[],
-  techvault: Object.values(techvaultImages) as string[],
   "webflow-headphones": Object.values(headphonesImages) as string[],
 };
 
 const containerVariants = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.1 },
-  },
+  visible: { transition: { staggerChildren: 0.1 } },
 };
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
+
+function MediaGallery({ media }: { media: ProjectMedia[] }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+  const current = media[activeIndex];
+
+  return (
+    <div>
+      {/* Main viewer */}
+      <div className="relative rounded-lg overflow-hidden bg-dark/60 border border-edge/20">
+        {current.type === "video" ? (
+          <video
+            key={current.src}
+            src={current.src}
+            poster={current.poster}
+            controls
+            preload="none"
+            playsInline
+            className="w-full aspect-video object-contain"
+          />
+        ) : (
+          <img
+            src={current.src}
+            alt={current.label || "Project screenshot"}
+            className="w-full aspect-video object-contain cursor-pointer hover:opacity-90 transition-opacity"
+            loading="lazy"
+            onClick={() => setLightboxSrc(current.src)}
+          />
+        )}
+      </div>
+
+      {/* Tabs */}
+      {media.length > 1 && (
+        <div className="mt-2 flex gap-1.5 flex-wrap">
+          {media.map((item, i) => (
+            <button
+              key={i}
+              onClick={() => setActiveIndex(i)}
+              className={`inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-[11px] font-medium transition-all ${
+                activeIndex === i
+                  ? "bg-accent/20 text-accent-light border border-accent/30"
+                  : "bg-surface/40 text-muted border border-edge/20 hover:text-body hover:border-edge/40"
+              }`}
+            >
+              {item.type === "video" && <Play size={10} className="shrink-0" />}
+              {item.label || (item.type === "video" ? "Video" : `Image ${i + 1}`)}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* Lightbox */}
+      {lightboxSrc && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/85 backdrop-blur-sm cursor-pointer p-4"
+          onClick={() => setLightboxSrc(null)}
+        >
+          <img
+            src={lightboxSrc}
+            alt="Expanded view"
+            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+          <button
+            onClick={() => setLightboxSrc(null)}
+            className="absolute top-6 right-6 text-white/70 hover:text-white text-3xl font-light transition-colors"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Projects() {
   const featuredProjects = projects.filter((p) => p.featured);
@@ -37,77 +104,77 @@ export default function Projects() {
 
   return (
     <Section id="projects" title="Projects" number="03.">
-      {/* Bento grid for featured projects */}
+      {/* Featured projects */}
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10"
+        className="space-y-10 mb-12"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
       >
-        {featuredProjects.map((project, index) => {
-          const images = projectImageMap[project.id];
-          const thumbnail = images?.[0];
+        {featuredProjects.map((project) => {
+          const localImages = projectImageMap[project.id];
+          const thumbnail = localImages?.[0];
           const mainLink = project.live || project.github;
-          const isLarge = index === 0;
+          const hasMedia = project.media && project.media.length > 0;
 
           return (
-            <motion.div
-              key={project.id}
-              className={`group ${isLarge ? "sm:col-span-2" : ""}`}
-              variants={itemVariants}
-            >
-              <div className="card-accent rounded-xl overflow-hidden h-full">
-                {/* Image */}
-                {thumbnail && (
-                  <div className={`overflow-hidden ${isLarge ? "aspect-[21/9]" : "aspect-video"}`}>
-                    <img
-                      src={thumbnail}
-                      alt={`${project.title} preview`}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
+            <motion.div key={project.id} className="group" variants={itemVariants}>
+              <div className="card-accent rounded-xl overflow-hidden">
+                {/* Media area */}
+                {hasMedia ? (
+                  <div className="p-4 pb-0">
+                    <MediaGallery media={project.media!} />
                   </div>
-                )}
+                ) : thumbnail ? (
+                  <div className="p-4 pb-0">
+                    <div className="relative rounded-lg overflow-hidden bg-dark/60 border border-edge/20">
+                      <img
+                        src={thumbnail}
+                        alt={`${project.title} preview`}
+                        className="w-full aspect-video object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                ) : null}
 
+                {/* Content */}
                 <div className="p-5">
-                  <div className="flex items-center justify-between gap-2">
-                    <h3>
-                      {mainLink ? (
-                        <a
-                          href={mainLink}
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          className="inline-flex items-baseline font-medium leading-tight text-heading group-hover:text-accent-light transition-colors"
-                        >
-                          {project.title}
-                          <ArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-                        </a>
-                      ) : (
-                        <span className="font-medium text-heading">{project.title}</span>
-                      )}
-                    </h3>
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <h3>
+                        {mainLink ? (
+                          <a
+                            href={mainLink}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                            className="inline-flex items-baseline font-medium leading-tight text-heading group-hover:text-accent-light transition-colors"
+                          >
+                            {project.title}
+                            <ArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                          </a>
+                        ) : (
+                          <span className="font-medium text-heading">{project.title}</span>
+                        )}
+                      </h3>
 
-                    <div className="flex items-center gap-2 shrink-0">
+                      {project.client && (
+                        <p className="mt-0.5 text-xs text-accent/70">
+                          Client: {project.client}
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-2 shrink-0 mt-1">
+                      <span className="text-xs text-muted">{project.year}</span>
                       {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          className="text-muted hover:text-accent transition-colors"
-                          aria-label={`${project.title} GitHub`}
-                        >
+                        <a href={project.github} target="_blank" rel="noreferrer noopener" className="text-muted hover:text-accent transition-colors" aria-label="GitHub">
                           <Github size={15} />
                         </a>
                       )}
                       {project.live && (
-                        <a
-                          href={project.live}
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          className="text-muted hover:text-accent transition-colors"
-                          aria-label={`${project.title} live demo`}
-                        >
+                        <a href={project.live} target="_blank" rel="noreferrer noopener" className="text-muted hover:text-accent transition-colors" aria-label="Live">
                           <ExternalLink size={15} />
                         </a>
                       )}
@@ -132,7 +199,7 @@ export default function Projects() {
         })}
       </motion.div>
 
-      {/* Other projects — compact list */}
+      {/* Other projects */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -147,11 +214,7 @@ export default function Projects() {
           const mainLink = project.live || project.github;
 
           return (
-            <motion.div
-              key={project.id}
-              className="group mb-4"
-              variants={itemVariants}
-            >
+            <motion.div key={project.id} className="group mb-4" variants={itemVariants}>
               <div className="card-accent rounded-lg p-4">
                 <div className="flex items-center justify-between gap-2">
                   <h4>

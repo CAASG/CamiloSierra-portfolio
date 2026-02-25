@@ -20,17 +20,26 @@ export interface Experience {
   technologies: string[];
 }
 
+export interface ProjectMedia {
+  type: "video" | "image";
+  src: string;
+  label?: string;
+  poster?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
   description: string;
   image?: string;
+  media?: ProjectMedia[];
   technologies: string[];
   github?: string;
   live?: string;
   featured: boolean;
   category: ProjectCategory;
   year: number;
+  client?: string;
 }
 
 export type ProjectCategory =
