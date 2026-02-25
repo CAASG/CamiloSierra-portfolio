@@ -1,32 +1,68 @@
-import { motion } from 'framer-motion';
-import Background from './components/Background';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Experience from './components/Experience';
-import FeaturedProject from './components/FeaturedProject';
-import Projects from './components/Projects';
-import TechStack from './components/TechStack';
-import Contact from './components/Contact';
+import SpotlightBackground from "./components/layout/SpotlightBackground";
+import MobileHeader from "./components/layout/MobileHeader";
+import Sidebar from "./components/layout/Sidebar";
+import About from "./components/sections/About";
+import Experience from "./components/sections/Experience";
+import Projects from "./components/sections/Projects";
+import Certifications from "./components/sections/Certifications";
+import Contact from "./components/sections/Contact";
 
 function App() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      className="relative"
-    >
-      <Background />
-      <Navbar />
-      <Hero />
-      <About />
-      <Experience />
-      <FeaturedProject />
-      <Projects />
-      <TechStack />
-      <Contact />
-    </motion.div>
+    <div className="relative">
+      <SpotlightBackground />
+      <MobileHeader />
+
+      <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
+        <div className="lg:flex lg:justify-between lg:gap-4">
+          <Sidebar />
+
+          <main id="content" className="pt-24 lg:w-[52%] lg:py-24">
+            <About />
+            <Experience />
+            <Projects />
+            <Certifications />
+            <Contact />
+
+            {/* Footer */}
+            <footer className="max-w-md pb-16 text-sm text-slate-500 sm:pb-0">
+              <p>
+                Loosely designed and coded by{" "}
+                <span className="text-slate-400">Camilo Sierra</span>.
+                Built with{" "}
+                <a
+                  href="https://react.dev"
+                  className="font-medium text-slate-400 hover:text-teal-300 transition-colors"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  React
+                </a>{" "}
+                and{" "}
+                <a
+                  href="https://tailwindcss.com"
+                  className="font-medium text-slate-400 hover:text-teal-300 transition-colors"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Tailwind CSS
+                </a>
+                , deployed with{" "}
+                <a
+                  href="https://vercel.com"
+                  className="font-medium text-slate-400 hover:text-teal-300 transition-colors"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Vercel
+                </a>
+                .
+              </p>
+            </footer>
+          </main>
+        </div>
+      </div>
+    </div>
   );
 }
 
