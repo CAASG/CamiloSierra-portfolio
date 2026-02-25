@@ -11,14 +11,13 @@ export default function Sidebar() {
   return (
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:justify-between lg:py-24">
       <div>
-        {/* Name & Role */}
         <motion.h1
-          className="text-4xl font-display font-bold tracking-tight text-heading sm:text-5xl"
+          className="text-4xl font-display font-bold tracking-tight sm:text-5xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <a href="/">{personalInfo.name}</a>
+          <a href="/" className="gradient-text">{personalInfo.name}</a>
         </motion.h1>
 
         <motion.h2
@@ -39,7 +38,7 @@ export default function Sidebar() {
           {personalInfo.summary.split(".")[0]}.
         </motion.p>
 
-        {/* Navigation */}
+        {/* Numbered Navigation */}
         <nav className="nav hidden lg:block" aria-label="In-page jump links">
           <motion.ul
             className="mt-16 w-max"
@@ -47,25 +46,33 @@ export default function Sidebar() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            {navItems.map((item) => {
+            {navItems.map((item, index) => {
               const sectionId = item.href.replace("#", "");
               const isActive = activeSection === sectionId;
+              const num = String(index + 1).padStart(2, "0");
 
               return (
                 <li key={item.href}>
                   <a
-                    className="group flex items-center py-3"
+                    className="group flex items-center gap-4 py-3"
                     href={item.href}
                   >
                     <span
-                      className={`mr-4 h-px transition-all duration-300 group-hover:w-16 group-hover:bg-heading group-focus-visible:w-16 group-focus-visible:bg-heading ${
-                        isActive
-                          ? "w-16 bg-heading"
-                          : "w-8 bg-muted"
+                      className={`font-mono text-xs transition-colors duration-300 ${
+                        isActive ? "text-accent" : "text-muted group-hover:text-accent"
+                      }`}
+                    >
+                      {num}
+                    </span>
+
+                    <span
+                      className={`h-px transition-all duration-300 group-hover:w-12 group-hover:bg-accent ${
+                        isActive ? "w-12 bg-accent" : "w-6 bg-edge"
                       }`}
                     />
+
                     <span
-                      className={`text-xs font-bold uppercase tracking-widest transition-colors duration-300 group-hover:text-heading group-focus-visible:text-heading ${
+                      className={`text-xs font-bold uppercase tracking-widest transition-colors duration-300 group-hover:text-heading ${
                         isActive ? "text-heading" : "text-muted"
                       }`}
                     >
@@ -79,7 +86,6 @@ export default function Sidebar() {
         </nav>
       </div>
 
-      {/* Social Links */}
       <motion.ul
         className="ml-1 mt-8 flex items-center gap-5"
         aria-label="Social media"

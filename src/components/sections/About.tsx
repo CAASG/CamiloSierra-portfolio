@@ -20,15 +20,13 @@ const itemVariants = {
 
 export default function About() {
   return (
-    <Section id="about">
+    <Section id="about" title="About" number="01.">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
       >
-        <h2 className="section-heading mb-8 lg:hidden">About</h2>
-
         <div className="space-y-4">
           <p>
             I started my journey in tech studying{" "}

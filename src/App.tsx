@@ -24,12 +24,10 @@ function App() {
             <Certifications />
             <Contact />
 
-            {/* Footer */}
             <footer className="max-w-md pb-16 text-sm text-muted sm:pb-0">
               <p>
-                Loosely designed and coded by{" "}
-                <span className="text-body">Camilo Sierra</span>.
-                Built with{" "}
+                Designed & built by{" "}
+                <span className="text-body">Camilo Sierra</span> with{" "}
                 <a
                   href="https://react.dev"
                   className="font-medium text-body hover:text-accent transition-colors"
@@ -37,8 +35,8 @@ function App() {
                   rel="noreferrer"
                 >
                   React
-                </a>{" "}
-                and{" "}
+                </a>
+                ,{" "}
                 <a
                   href="https://tailwindcss.com"
                   className="font-medium text-body hover:text-accent transition-colors"
@@ -47,7 +45,16 @@ function App() {
                 >
                   Tailwind CSS
                 </a>
-                , deployed with{" "}
+                {" & "}
+                <a
+                  href="https://www.framer.com/motion/"
+                  className="font-medium text-body hover:text-accent transition-colors"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Framer Motion
+                </a>
+                . Deployed on{" "}
                 <a
                   href="https://vercel.com"
                   className="font-medium text-body hover:text-accent transition-colors"

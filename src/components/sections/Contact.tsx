@@ -5,15 +5,13 @@ import { personalInfo } from "../../data/personal";
 
 export default function Contact() {
   return (
-    <Section id="contact" className="mb-24 lg:mb-36">
+    <Section id="contact" title="Contact" number="05." className="mb-24 lg:mb-36">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
       >
-        <h2 className="section-heading mb-4">Get In Touch</h2>
-
         <p className="max-w-lg text-body leading-relaxed">
           I'm always interested in hearing about new projects and opportunities.
           Whether you're looking for a developer to bring your ideas to life,
@@ -21,10 +19,11 @@ export default function Contact() {
           — feel free to reach out.
         </p>
 
-        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+        <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-6">
+          {/* Gradient border CTA */}
           <a
             href={`mailto:${personalInfo.email}`}
-            className="inline-flex items-center gap-2 rounded-lg border border-accent/30 bg-accent/10 px-6 py-3 text-sm font-medium text-accent-light transition-all hover:bg-accent/20 hover:border-accent/50 hover:shadow-[0_0_24px_rgba(139,92,246,0.15)]"
+            className="gradient-border inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium text-accent-light transition-all hover:text-heading hover:shadow-[0_0_30px_rgba(139,92,246,0.2)]"
           >
             <Mail size={16} />
             Say Hello
