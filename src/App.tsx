@@ -25,14 +25,14 @@ function App() {
             <Contact />
 
             {/* Footer */}
-            <footer className="max-w-md pb-16 text-sm text-slate-500 sm:pb-0">
+            <footer className="max-w-md pb-16 text-sm text-muted sm:pb-0">
               <p>
                 Loosely designed and coded by{" "}
-                <span className="text-slate-400">Camilo Sierra</span>.
+                <span className="text-body">Camilo Sierra</span>.
                 Built with{" "}
                 <a
                   href="https://react.dev"
-                  className="font-medium text-slate-400 hover:text-teal-300 transition-colors"
+                  className="font-medium text-body hover:text-accent transition-colors"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -41,7 +41,7 @@ function App() {
                 and{" "}
                 <a
                   href="https://tailwindcss.com"
-                  className="font-medium text-slate-400 hover:text-teal-300 transition-colors"
+                  className="font-medium text-body hover:text-accent transition-colors"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -50,7 +50,7 @@ function App() {
                 , deployed with{" "}
                 <a
                   href="https://vercel.com"
-                  className="font-medium text-slate-400 hover:text-teal-300 transition-colors"
+                  className="font-medium text-body hover:text-accent transition-colors"
                   target="_blank"
                   rel="noreferrer"
                 >

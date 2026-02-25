@@ -11,13 +11,13 @@ export default function Sidebar() {
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:justify-between lg:py-24">
       <div>
         {/* Name & Role */}
-        <h1 className="text-4xl font-display font-bold tracking-tight text-slate-200 sm:text-5xl">
+        <h1 className="text-4xl font-display font-bold tracking-tight text-heading sm:text-5xl">
           <a href="/">{personalInfo.name}</a>
         </h1>
-        <h2 className="mt-3 text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
+        <h2 className="mt-3 text-lg font-medium tracking-tight text-accent-light sm:text-xl">
           {personalInfo.role}
         </h2>
-        <p className="mt-4 max-w-xs leading-normal text-slate-400">
+        <p className="mt-4 max-w-xs leading-normal text-body">
           {personalInfo.summary.split(".")[0]}.
         </p>
 
@@ -35,15 +35,15 @@ export default function Sidebar() {
                     href={item.href}
                   >
                     <span
-                      className={`mr-4 h-px transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 ${
+                      className={`mr-4 h-px transition-all group-hover:w-16 group-hover:bg-heading group-focus-visible:w-16 group-focus-visible:bg-heading ${
                         isActive
-                          ? "w-16 bg-slate-200"
-                          : "w-8 bg-slate-600"
+                          ? "w-16 bg-heading"
+                          : "w-8 bg-muted"
                       }`}
                     />
                     <span
-                      className={`text-xs font-bold uppercase tracking-widest group-hover:text-slate-200 group-focus-visible:text-slate-200 ${
-                        isActive ? "text-slate-200" : "text-slate-500"
+                      className={`text-xs font-bold uppercase tracking-widest group-hover:text-heading group-focus-visible:text-heading ${
+                        isActive ? "text-heading" : "text-muted"
                       }`}
                     >
                       {item.label}
@@ -60,7 +60,7 @@ export default function Sidebar() {
       <ul className="ml-1 mt-8 flex items-center gap-5" aria-label="Social media">
         <li>
           <a
-            className="block text-slate-400 hover:text-slate-200 transition-colors"
+            className="block text-body hover:text-accent transition-colors"
             href={personalInfo.github}
             target="_blank"
             rel="noreferrer noopener"
@@ -71,7 +71,7 @@ export default function Sidebar() {
         </li>
         <li>
           <a
-            className="block text-slate-400 hover:text-slate-200 transition-colors"
+            className="block text-body hover:text-accent transition-colors"
             href={personalInfo.linkedin}
             target="_blank"
             rel="noreferrer noopener"
@@ -82,7 +82,7 @@ export default function Sidebar() {
         </li>
         <li>
           <a
-            className="block text-slate-400 hover:text-slate-200 transition-colors"
+            className="block text-body hover:text-accent transition-colors"
             href={`mailto:${personalInfo.email}`}
             aria-label="Email"
           >

@@ -10,12 +10,12 @@ export default function About() {
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
       >
-        <h2 className="mb-8 section-heading lg:hidden">About</h2>
+        <h2 className="section-heading mb-8 lg:hidden">About</h2>
 
         <div className="space-y-4">
           <p>
             I'm a full-stack developer who thrives on building{" "}
-            <span className="text-slate-200">scalable, cloud-based web applications</span>{" "}
+            <span className="text-heading">scalable, cloud-based web applications</span>{" "}
             that make a real impact. With over 2 years of professional experience, I've worked
             across startups and product companies — from{" "}
             <a
@@ -38,7 +38,7 @@ export default function About() {
 
           <p>
             My main focus these days is crafting robust applications with{" "}
-            <span className="text-slate-200">Next.js, TypeScript, and AWS</span>,
+            <span className="text-heading">Next.js, TypeScript, and AWS</span>,
             shipping clean architecture backed by test-driven development and CI/CD automation.
             I enjoy the full spectrum — from designing intuitive interfaces to deploying
             scalable cloud infrastructure.

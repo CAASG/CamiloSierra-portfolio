@@ -22,42 +22,38 @@ export default function Projects() {
             {[...featuredProjects, ...otherProjects].map((project) => (
               <li key={project.id} className="mb-12">
                 <div className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-                  {/* Hover highlight background */}
-                  <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
+                  <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-surface/40 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(139,92,246,0.1)] lg:group-hover:drop-shadow-lg" />
 
-                  {/* Image / Year column */}
                   <div className="z-10 sm:order-2 sm:col-span-2">
-                    <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-muted">
                       {project.year}
                     </span>
                     {project.featured && (
-                      <span className="ml-2 inline-flex items-center rounded-full bg-teal-400/10 px-2 py-0.5 text-[10px] font-medium text-teal-300">
+                      <span className="ml-2 inline-flex items-center rounded-full bg-accent/10 px-2 py-0.5 text-[10px] font-medium text-accent-light">
                         Featured
                       </span>
                     )}
                   </div>
 
-                  {/* Content column */}
                   <div className="z-10 sm:order-1 sm:col-span-6">
                     <h3>
-                      <span className="inline-flex items-baseline font-medium leading-tight text-slate-200 group-hover:text-teal-300 transition-colors text-base">
+                      <span className="inline-flex items-baseline font-medium leading-tight text-heading group-hover:text-accent-light transition-colors text-base">
                         {project.title}
                         <ArrowUpRight className="ml-1 inline-block h-4 w-4 shrink-0 translate-y-px transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
                       </span>
                     </h3>
 
-                    <p className="mt-2 text-sm leading-normal text-slate-400">
+                    <p className="mt-2 text-sm leading-normal text-body">
                       {project.description}
                     </p>
 
-                    {/* Links */}
                     <div className="mt-3 flex items-center gap-3">
                       {project.github && (
                         <a
                           href={project.github}
                           target="_blank"
                           rel="noreferrer noopener"
-                          className="text-slate-400 hover:text-slate-200 transition-colors"
+                          className="text-body hover:text-accent transition-colors"
                           aria-label={`${project.title} GitHub`}
                         >
                           <Github size={16} />
@@ -68,7 +64,7 @@ export default function Projects() {
                           href={project.live}
                           target="_blank"
                           rel="noreferrer noopener"
-                          className="text-slate-400 hover:text-slate-200 transition-colors"
+                          className="text-body hover:text-accent transition-colors"
                           aria-label={`${project.title} live demo`}
                         >
                           <ExternalLink size={16} />
@@ -76,7 +72,6 @@ export default function Projects() {
                       )}
                     </div>
 
-                    {/* Tech badges */}
                     <ul className="mt-3 flex flex-wrap gap-2" aria-label="Technologies used">
                       {project.technologies.map((tech) => (
                         <li key={tech}>
